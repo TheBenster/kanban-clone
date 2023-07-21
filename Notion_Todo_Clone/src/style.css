@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+.sidebar{
+    background-color: #1e2a3a;
+    color: white;
+    width: 15vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header{
+    margin-left: 25px
+}
+
+#projBtn{
+    height: 30px;
+    width: 100px;
+    font-size: 1rem;
+    margin-left: 25px;
+    border-radius: 20px;
+    border: none;
+    background-color: #41599c;
+    color: white;
+    font-weight:300;
+}
+
+#projBtn:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #1e2a3a;
+    transition-duration: 400ms;
+}
+
+#projModal{
+    margin-top: 10px;
+    display: block;
+    position: relative;
+    width: 200px;
+    height: 15vh;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.entry{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    gap: 5px;
+    padding: 5px;
+
+}
+.entry input[type='text']{
+    border: 1px solid black;
+    border-radius: 15px;
+    height: 25px;
+}
+.submit-n-cancel{
+    display:flex;
+    justify-content: space-between;
+}
+.submit-n-cancel button{
+    background-color: #212121;
+    color: white;
+    font-weight: 700;
+    font-size: .9rem;
+    letter-spacing: 1px;
+    height: 30px;
+    width: 70px;
+    border: none;
+
+    border-radius: 15px;
+}
+.submit-n-cancel button:hover{
+    cursor: pointer;
+}
+
+.projects{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 15px;
+    align-items: end;
+}
+
+#root{
+    overflow-x: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.add-header{
+    
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    height: 20vh;
+    width: 100vw;
+    padding-bottom: 0;
+}
+.add-header h2{
+    padding-left: 40px;
+}
+hr{
+    width: 35vw;
+    margin:0;
+}
+
+.kanban{
+    display: flex;;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-left: 150px;
+    padding-right: 200px;
+    width: 60vw;
+    height: 70vh;
+}
+
+.progress-line{
+    width: 15vw;
+    height: 1px;
+    border: none;
+    color:#1e2a3a;
+    background-color: #1e2a3a;
+}
+.pre-task{
+    width: 20vw;
+    height: 70vh;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    padding: 25px;
+}
+.in-progress{
+    margin-left: 100px;
+    width: 20vw;
+    background-color: #f0f0f0;
+    padding: 25px;
+    border-radius: 20px;
+    height: 70vh;
+}
+
+.completed{
+    margin-left: 100px;
+    width: 20vw;
+    background-color: #f0f0f0;
+    padding: 25px;
+    border-radius: 20px;
+    height: 70vh;
+}
+
+#addTask:hover{
+    cursor: pointer;
+    color:#1e2a3a;
+}
+
+.task-modal{
+    width: 20vw;
+    height: 60vh;
+    position: absolute;
+    left: 310px;
+    top: 70px;
+    background-color: #41599c;
+    padding: 15px;
+    color: white;
+    border-radius: 0px 0px 30px 30px;
+}
+.task-modal input[type='text']{
+    padding-left: 15px;
+}
+.task-card{
+    background-color: white;
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 20px;
+}
+.task-card p{
+    font-size: 1rem;
+    font-weight: 300;
+}
+.task-card h3{
+    font-size: 1.2rem;
+
+}
