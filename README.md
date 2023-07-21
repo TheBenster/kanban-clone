@@ -29,19 +29,31 @@ react-modal
 Here are some planned features and improvements for future releases:
 
 User Authentication: Add user authentication to allow multiple users to manage their own boards.
+
 Data Persistence: Integrate with a backend or database to persist user data.
+
 Labels and Tags: Implement label and tag functionalities to categorize tasks further.
+
 Collaborative Editing: Enable real-time collaboration for teams working on shared projects.
+
 Export and Import: Allow users to export and import their boards and tasks.
-Contribution
+
+
+## Contribution
 Contributions are welcome! If you'd like to contribute to the project, please follow these steps:
 
 Fork the repository.
+
 Create a new branch for your feature: `git checkout -b feature-name`
+
 Commit your changes: `git commit -m "Add feature"`
+
 Push to the branch: `git push origin feature-name`
+
 Open a pull request, and describe the changes you've made.
+
 Please ensure your code follows the project's coding conventions and includes appropriate tests.
+
 
 License
 This project is licensed under the **MIT** License.
