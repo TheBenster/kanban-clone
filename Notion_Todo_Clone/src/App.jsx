@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import Modal from 'react-modal';
-import './style.css';
+import { useState } from "react";
+import Modal from "react-modal";
+import "./style.css";
 
-Modal.setAppElement('#root'); // Set the root element for accessibility
+Modal.setAppElement("#root"); // Set the root element for accessibility
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [projects, setProjects] = useState([]);
-  const [projectName, setProjectName] = useState('');
+  const [projectName, setProjectName] = useState("");
 
   const handleModalOpen = () => {
     setIsModalOpen(true);
@@ -21,12 +21,11 @@ function App() {
     e.preventDefault();
     const newProjectName = e.target.elements.projName.value;
     setProjects([...projects, newProjectName]);
-    setProjectName('');
+    setProjectName("");
     setIsModalOpen(false);
   };
 
   const handleTaskSubmit = (e) => {
-
     switch (task.currentStatus) {
       case "Not Started":
         task.currentStatus = "Not Started";
@@ -41,18 +40,24 @@ function App() {
         task.currentStatus = "Not Started";
         break;
     }
-    
+
     e.preventDefault();
     const newTaskName = e.target.elements.taskName.value;
     const newTaskDescription = e.target.elements.taskDescription.value;
     const newTaskDueDate = e.target.elements.taskDueDate.value;
     const newTaskPriority = e.target.elements.taskPriority.value;
     const newTaskCurrentStatus = e.target.elements.taskCurrentStatus.value;
-    const newTask = new Task(newTaskName, newTaskDescription, newTaskCurrentStatus, newTaskDueDate, newTaskPriority);
+    const newTask = new Task(
+      newTaskName,
+      newTaskDescription,
+      newTaskCurrentStatus,
+      newTaskDueDate,
+      newTaskPriority
+    );
     setProjects([...projects, newTask]);
-    setProjectName('');
+    setProjectName("");
     setIsModalOpen(false);
-  }
+  };
 
   return (
     <>
@@ -61,11 +66,14 @@ function App() {
         isOpen={isModalOpen}
         onRequestClose={handleModalClose}
         contentLabel="Project Modal"
-        id='projModal'
+        id="projModal"
       >
-        <ProjForm handleSubmit={handleSubmit} handleModalClose={handleModalClose} />
+        <ProjForm
+          handleSubmit={handleSubmit}
+          handleModalClose={handleModalClose}
+        />
       </Modal>
-      <MainContent/>
+      <MainContent />
     </>
   );
 }
@@ -85,7 +93,7 @@ function ProjForm({ handleSubmit, handleModalClose }) {
         />
       </div>
       <div className="submit-n-cancel">
-        <button id="cancel" onClick={handleModalClose}>
+        <button id="cancel" onClick={() => handleModalClose()}>
           Cancel
         </button>
         <button type="submit" id="submit">
@@ -95,7 +103,6 @@ function ProjForm({ handleSubmit, handleModalClose }) {
     </form>
   );
 }
-
 
 function Sidebar({ handleModalOpen, projects }) {
   return (
@@ -131,28 +138,30 @@ function AddTask({ handleTaskSubmit, handleModalClose }) {
   };
 
   return (
-    <div className='add-header'>
-      <h2 id='addTask' onClick={handleToggleForm}>
+    <div className="add-header">
+      <h2 id="addTask" onClick={handleToggleForm}>
         Add Task
       </h2>
       <Modal
         isOpen={isFormOpen}
-        onRequestClose={handleModalClose}
-        contentLabel='Task Modal'
-        className='task-modal'
+        onRequestClose={handleToggleForm}
+        contentLabel="Task Modal"
+        className="task-modal"
       >
-        <TaskForm handleTaskSubmit={handleTaskSubmit} handleModalClose={handleModalClose} />
+        <TaskForm
+          handleTaskSubmit={handleTaskSubmit}
+          handleToggleForm={handleToggleForm}
+        />
       </Modal>
       <hr />
     </div>
   );
 }
 
-
-function TaskForm({ handleTaskSubmit, handleModalClose }) {
+function TaskForm({ handleTaskSubmit, handleToggleForm }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [currentStatus, setCurrentStatus] = useState('');
+  const [currentStatus, setCurrentStatus] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [priority, setPriority] = useState("");
 
@@ -167,7 +176,7 @@ function TaskForm({ handleTaskSubmit, handleModalClose }) {
       description,
       currentStatus,
       dueDate,
-      priority
+      priority,
     };
     handleTaskSubmit(task);
     setTitle("");
@@ -175,7 +184,7 @@ function TaskForm({ handleTaskSubmit, handleModalClose }) {
     setCurrentStatus("");
     setDueDate("");
     setPriority("");
-    handleModalClose();
+    handleToggleForm();
   };
 
   return (
@@ -225,7 +234,7 @@ function TaskForm({ handleTaskSubmit, handleModalClose }) {
         />
       </div>
       <div className="submit-n-cancel">
-        <button id="cancel" onClick={handleModalClose}>
+        <button id="cancel" onClick={handleToggleForm}>
           Cancel
         </button>
         <button type="submit" id="submit">
@@ -237,31 +246,31 @@ function TaskForm({ handleTaskSubmit, handleModalClose }) {
 }
 
 function Kanban({ notStartedTasks, inProgressTasks, completedTasks }) {
-  return(
-    <div className='kanban'>
+  return (
+    <div className="kanban">
       <div className="pre-task">
         <p>Haven't Started</p>
-        <hr className='progress-line'/>
+        <hr className="progress-line" />
         {notStartedTasks.map((task, index) => (
-          <TaskCard key={index} {...task}/>
+          <TaskCard key={index} {...task} />
         ))}
       </div>
       <div className="in-progress">
         <p>In Progress</p>
-        <hr className='progress-line'/>
+        <hr className="progress-line" />
         {inProgressTasks.map((task, index) => (
-          <TaskCard key={index} {...task}/>
+          <TaskCard key={index} {...task} />
         ))}
       </div>
       <div className="completed">
         <p>Completed</p>
-        <hr className='progress-line'/>
+        <hr className="progress-line" />
         {completedTasks.map((task, index) => (
-          <TaskCard key={index} {...task}/>
+          <TaskCard key={index} {...task} />
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 function MainContent() {
@@ -297,16 +306,14 @@ function MainContent() {
   );
 }
 
-
-function TaskCard({title, description, currentStatus, dueDate, priority}){
-// if the currentStatus is inProgress, append the card to the inProgress div
+function TaskCard({ title, description, currentStatus, dueDate, priority }) {
+  // if the currentStatus is inProgress, append the card to the inProgress div
 
   return (
-    <div className='task-card'>
+    <div className="task-card">
       <h3>{title}</h3>
       <p>{description}</p>
     </div>
-
-  )
+  );
 }
 export default App;
